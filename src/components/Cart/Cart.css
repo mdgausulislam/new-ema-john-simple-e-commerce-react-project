@@ -1,6 +1,37 @@
-.cart{
+.cart {
     background-color: #FF99004D;
-    padding: 25px;
+    padding: 50px 0;
+    padding-left:15px;
     position: sticky;
     top: 0;
+   
+}
+
+.Clear-btn {
+    width: 232px;
+    height: 48px;
+    border-radius: 4px;
+    background: #FF3030;
+    font-family: Lato;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.085px;
+    color: #FFF;
+}
+
+.btn-review-order {
+    margin-top: 20px;
+    width: 232px;
+    height: 48px;
+    border-radius: 4px;
+    background: #F90;
+    color: #FFF;
+    font-family: Lato;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.085px;
 }

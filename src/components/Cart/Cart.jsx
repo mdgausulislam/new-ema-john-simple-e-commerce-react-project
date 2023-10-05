@@ -1,12 +1,15 @@
 import React from 'react';
 import './Cart.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = (props) => {
-    const {cart} = props;
-    let totalPrice=0;
-    let totalShipping=0;
+    const { cart } = props;
+    let totalPrice = 0;
+    let totalShipping = 0;
     let quantity = 0;
-    for(const product of cart) {
+    for (const product of cart) {
 
 
         // if(product.quantity===0){
@@ -15,16 +18,16 @@ const Cart = (props) => {
         // product.quantity=product.quantity||1;
 
 
-        totalPrice= totalPrice + product.price * product.quantity;
+        totalPrice = totalPrice + product.price * product.quantity;
 
-        totalShipping=totalShipping+product.shipping;
+        totalShipping = totalShipping + product.shipping;
 
         quantity = quantity + product.quantity;
-        
-    }
-    const tax=totalPrice*7/100;
 
-    const grandTotal=(totalPrice+totalShipping+tax).toFixed(2);
+    }
+    const tax = totalPrice * 7 / 100;
+
+    const grandTotal = (totalPrice + totalShipping + tax).toFixed(2);
     return (
         <div className="cart">
             <h4>Order Summary</h4>
@@ -33,8 +36,8 @@ const Cart = (props) => {
             <p>Shipping Charge:${totalShipping}</p>
             <p>Tax: ${tax}</p>
             <h5>Grand Total: ${grandTotal}</h5>
-            <button>Clear Cart </button>
-            <button>Review Order </button> 
+            <button className="Clear-btn">Clear Cart <FontAwesomeIcon icon={faTrash} /></button>
+            <button className="btn-review-order">Review Order <FontAwesomeIcon icon={faArrowAltCircleRight} /></button>
         </div>
 
     );
