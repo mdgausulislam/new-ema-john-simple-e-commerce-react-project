@@ -35,11 +35,16 @@ const Shop = () => {
         const storedCart = getShoppingCart();
         const saveCart = [];
 
+
+        //step 1: get id of the addedProduct
         for (const id in storedCart) {
+            //step-02 get product from products  state bby using id
             const addedProduct = products.find(product => product.id === id);
             if (addedProduct) {
+                //step-3: add quantity
                 const quantity = storedCart[id];
                 addedProduct.quantity = quantity;
+                //step-4:add the added product to save cart
                 saveCart.push(addedProduct);
             }
 
