@@ -8,6 +8,8 @@
 }
 
 .Clear-btn {
+    display: flex;
+    justify-content: space-between;
     width: 232px;
     height: 48px;
     border-radius: 4px;
@@ -22,6 +24,8 @@
 }
 
 .btn-review-order {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
     width: 232px;
     height: 48px;
