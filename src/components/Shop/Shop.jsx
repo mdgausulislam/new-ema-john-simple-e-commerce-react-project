@@ -3,6 +3,9 @@ import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 
 const Shop = () => {
@@ -59,21 +62,21 @@ const Shop = () => {
         // if exit update quantity by 1
 
         const exists = cart.find(pd => pd.id === product.id);
-        if(!exists) {
+        if (!exists) {
             product.quantity = 1;
             newCart = [...cart, product];
         }
-        else{
+        else {
             exists.quantity = exists.quantity + 1;
             const remaining = cart.filter(pd => pd.id !== product.id);
-            newCart= [...remaining,exists];
+            newCart = [...remaining, exists];
         }
 
         setCart(newCart);
         addToDb(product.id)
     }
 
-    const handleClearCart=()=>{
+    const handleClearCart = () => {
         setCart([]);
         deleteShoppingCart();
     }
@@ -94,7 +97,12 @@ const Shop = () => {
                 <Cart
                     cart={cart}
                     handleClearCart={handleClearCart}
-                ></Cart>
+                >
+                    <Link to='/orders'>
+                        <button className="btn-review-order">Review Order <FontAwesomeIcon icon={faArrowAltCircleRight} /></button>
+
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
