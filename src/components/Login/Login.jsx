@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     const handleSignUp=event=>{
         event.preventDefault();
-        const SignUp=event.target;
-        const email=SignUp.email.value;
-        const password=SignUp.password.value;
-        const confirmPassword=SignUp.confirm.value;
+        const formSignUp=event.target;
+        const email=formSignUp.email.value;
+        const password=formSignUp.password.value;
+        const confirmPassword=formSignUp.confirm.value;
         console.log(email,password,confirmPassword);
 
     }
