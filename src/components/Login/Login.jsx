@@ -10,7 +10,6 @@ const Login = () => {
     const {signIn} =useContext(AuthContext);
     const navigate=useNavigate();
     const location=useLocation();
-    console.log(location);
 
     const from=location.state?.from?.pathname|| '/';
 
@@ -44,7 +43,7 @@ const Login = () => {
                 </div>
                 <div className="form-control">
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="" required />
+                    <input type={show ? 'text':'password'} name="password" id="" required />
                     <p onClick={()=>setShow(!show)}><small>
                         {
                             show ? <span>Hide Password</span>:<span>Show Password</span>
