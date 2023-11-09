@@ -11,12 +11,15 @@ import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage, setItemsPerPages] = useState(10);
 
 
     const { totalProducts } = useLoaderData();
-    const itemsPerPage = 10; //TODO: make it dynamic
+    // const itemsPerPage = 10; //TODO: make it dynamic
     const totalPages = Math.ceil(totalProducts / itemsPerPage);
     const pageNumber = [...Array(totalPages).keys()];
+    const options = [5, 10, 15];
 
     console.log(totalProducts);
 
@@ -99,6 +102,11 @@ const Shop = () => {
         deleteShoppingCart();
     }
 
+    function handleSelectChange(event) {
+        setItemsPerPages(parseInt(event.target.value))
+        setCurrentPage(0)
+    }
+
     return (
         <>
             <div className='shop-container'>
@@ -127,9 +135,21 @@ const Shop = () => {
 
             {/* pagination */}
             <div className='pagination'>
+                <p>Current page:{currentPage} and items per page:{itemsPerPage}</p>
                 {
-                    pageNumber.map(number => <button key={number}>{number} </button>)
+                    pageNumber.map(number => <button
+                        key={number}
+                        className={currentPage===number ? 'selected':''}
+                        onClick={() => setCurrentPage(number)}
+                    >{number} </button>)
                 }
+                <select value={itemsPerPage} onChange={handleSelectChange}>
+                    {
+                        options.map(option => <option
+                            key={option} value={option}
+                        >{option}</option>)
+                    }
+                </select>
 
             </div>
         </>
