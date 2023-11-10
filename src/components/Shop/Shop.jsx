@@ -13,9 +13,9 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPages] = useState(10);
-
-
     const { totalProducts } = useLoaderData();
+
+
     // const itemsPerPage = 10; //TODO: make it dynamic
     const totalPages = Math.ceil(totalProducts / itemsPerPage);
     const pageNumber = [...Array(totalPages).keys()];
@@ -28,17 +28,27 @@ const Shop = () => {
      * Done 1:Determine the total number of items
      * TODO 2: Decide on the number of items per page
      * DONE 3: Calculate the total number of pages
+     * DONE 4: Determine the current Page
      * 
      * * */
 
 
 
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/products')
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data))
 
-    }, []);
+    // }, []);
+
+    useEffect(()=>{
+        async function fetchData(){
+            const response=await fetch(`http://localhost:5000/products?page=${currentPage}&limit=${itemsPerPage}`)
+            const data=await response.json();
+            setProducts(data);
+        }
+        fetchData()
+    },[currentPage,itemsPerPage])
 
     // useEffect(()=>{
     //     const storedCart=getShoppingCart();
